@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import { ColorModeContext, useMode } from "./theme";
 import Topbar from "./components/global/Topbar";
 import Login from "./pages/Login";
+import QuickStart from "./pages/QuickStart";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -21,7 +22,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/Home" element={<Home />} />
-              <Route path="/Login" element={<Login />} />
+              <Route path="/Login" element={<Login />} />\
+              <Route path="/Quick-Start" element={<QuickStart />} />
             </Routes>
           </main>
         </div>

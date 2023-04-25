@@ -30,7 +30,7 @@ const Topbar = () => {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
-            <Box sx={{ m: "0 10px" }}>
+            <Box sx={{ m: "0 0 0 10px" }}>
               <PhoneMenu />
             </Box>
             <Box
@@ -49,7 +49,7 @@ const Topbar = () => {
               </Typography>
             </Box>
 
-            {user ? (
+            {!user ? (
               <Button
                 onClick={() => navigate("Login")}
                 sx={{
@@ -61,7 +61,6 @@ const Topbar = () => {
                     theme.palette.mode === "dark"
                       ? colors.green[500]
                       : colors.green[400],
-                  m: "10px",
                   p: "2px 20px",
                   height: "35px",
                   fontWeight: 900,
@@ -77,7 +76,7 @@ const Topbar = () => {
                 Sign Up
               </Button>
             ) : (
-              <Box sx={{ m: "0 10px" }}>
+              <Box sx={{ m: "0 0 0 10px" }}>
                 <IconButton
                   color="inherit"
                   edge="end"
