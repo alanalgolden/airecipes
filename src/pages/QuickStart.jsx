@@ -17,16 +17,14 @@ const QuickStart = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
-    <div>
+    <Box sx={{ mt: "6vh" }}>
       <Grid
         container
-        spacing={2}
         direction="column"
         alignItems="center"
         justifyContent="center"
-        style={{ minHeight: "100vh" }}
       >
-        <Grid item sx={{ margin: "0 0 100px 0" }}>
+        <Grid item sx={{ margin: "0 0 10vh 0" }}>
           <Paper
             sx={{
               padding: "10px 4rem",
@@ -44,7 +42,8 @@ const QuickStart = () => {
             </Typography>
           </Paper>
         </Grid>
-        <Grid item>
+
+        <Grid item sx={{ mb: "1em" }} sx={{ mb: "1em" }}>
           <Button
             sx={{
               color: colors.white[500],
@@ -54,14 +53,12 @@ const QuickStart = () => {
               whiteSpace: "nowrap",
               borderRadius: "14px",
               backgroundColor: colors.orangeAccent[500],
-              boxShadow: "0px 3px 3px 0px rgba(0, 0, 0, 0.4)",
+              boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
               "&:hover": {
-                backgroundColor: colors.orangeAccent[600],
-                boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
+                backgroundColor: colors.orangeAccent[400],
               },
               "&:active": {
-                backgroundColor: colors.orangeAccent[400],
-                boxShadow: "0px 6px 6px 0px rgba(0, 0, 0, 0.42)",
+                backgroundColor: colors.orangeAccent[600],
               },
             }}
           >
@@ -76,7 +73,7 @@ const QuickStart = () => {
           </Button>
         </Grid>
 
-        <Grid item>
+        <Grid item sx={{ mb: "1em" }}>
           <Button
             sx={{
               color: colors.white[500],
@@ -86,13 +83,13 @@ const QuickStart = () => {
               whiteSpace: "nowrap",
               borderRadius: "14px",
               backgroundColor: colors.secondary[400],
-              boxShadow: "0px 3px 3px 0px rgba(0, 0, 0, 0.4)",
+              boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
               "&:hover": {
                 backgroundColor: colors.secondary[300],
                 boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
               },
               "&:active": {
-                backgroundColor: colors.secondary[200],
+                backgroundColor: colors.secondary[500],
                 boxShadow: "0px 6px 6px 0px rgba(0, 0, 0, 0.42)",
               },
             }}
@@ -108,7 +105,7 @@ const QuickStart = () => {
           </Button>
         </Grid>
 
-        <Grid item>
+        <Grid item sx={{ mb: "1em" }}>
           <Button
             disabled
             sx={{
@@ -146,21 +143,15 @@ const QuickStart = () => {
         </Grid>
 
         <Grid item sx={{ margin: "20px 0 0 0" }}>
-          <Box
-            display="flex"
-            alignContent="center"
-            justifyContent="space-evenly"
-          >
-            <Box textAlign="center" sx={{ minWidth: "6rem" }}>
+          <Box display="flex" justifyItems="center">
+            <Box>
               <IconButton
                 sx={{
                   color: colors.white[500],
                   backgroundColor: colors.orangeAccent[500],
                   mb: "8px",
-                  maxWidth: "1.5em",
-                  maxHeight: "1.5em",
-                  minWidth: "1.5em",
-                  minHeight: "1.5em",
+                  width: "1.7em",
+                  height: "1.7em",
                   "&:hover": {
                     backgroundColor: colors.orangeAccent[400],
                   },
@@ -176,7 +167,6 @@ const QuickStart = () => {
                 <LocalDiningIcon />
               </IconButton>
               <Box
-                display="block"
                 sx={{
                   fontFamily: "Mulish !important",
                   fontWeight: 400,
@@ -185,19 +175,17 @@ const QuickStart = () => {
                   textTransform: "uppercase",
                 }}
               >
-                Preferences
+                Options
               </Box>
             </Box>
-            <Box textAlign="center" sx={{ minWidth: "6rem" }}>
+            <Box textAlign="center" sx={{ m: "0 2em" }}>
               <IconButton
                 sx={{
                   color: colors.white[500],
                   backgroundColor: colors.orangeAccent[500],
                   mb: "8px",
-                  maxWidth: "1.5em",
-                  maxHeight: "1.5em",
-                  minWidth: "1.5em",
-                  minHeight: "1.5em",
+                  width: "1.7em",
+                  height: "1.7em",
                   "&:hover": {
                     backgroundColor: colors.orangeAccent[400],
                   },
@@ -224,16 +212,14 @@ const QuickStart = () => {
                 Pantry
               </Box>
             </Box>
-            <Box textAlign="center" sx={{ minWidth: "6rem" }}>
+            <Box textAlign="center">
               <IconButton
                 sx={{
                   color: colors.white[500],
                   backgroundColor: colors.orangeAccent[500],
                   mb: "8px",
-                  maxWidth: "1.5em",
-                  maxHeight: "1.5em",
-                  minWidth: "1.5em",
-                  minHeight: "1.5em",
+                  width: "1.7em",
+                  height: "1.7em",
                   "&:hover": {
                     backgroundColor: colors.orangeAccent[400],
                   },
@@ -263,7 +249,7 @@ const QuickStart = () => {
           </Box>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 };
 
