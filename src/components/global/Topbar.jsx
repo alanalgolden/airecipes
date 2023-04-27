@@ -28,7 +28,6 @@ const Topbar = () => {
   const colors = tokens(theme.palette.mode);
   const { user } = useContext(UserContext);
   const colorMode = useContext(ColorModeContext);
-  const photoURL = user.photoURL;
 
   return (
     ((device === "xs" || device === "sm") && (
@@ -132,7 +131,7 @@ const Topbar = () => {
               <Box display="flex" alignItems="center" sx={{ ml: "2vw" }}>
                 <IconButton>
                   <Avatar
-                    src={photoURL}
+                    src={user.photoURL}
                     imgProps={{ referrerPolicy: "no-referrer" }}
                   />
                 </IconButton>

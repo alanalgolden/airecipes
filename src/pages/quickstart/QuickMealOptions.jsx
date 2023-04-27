@@ -8,14 +8,16 @@ import {
   Typography,
 } from "@mui/material";
 import { useTheme } from "@mui/material";
-import { tokens } from "../theme";
+import { tokens } from "../../theme";
 import SettingsIcon from "@mui/icons-material/Settings";
 import KitchenIcon from "@mui/icons-material/Kitchen";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
+import { useNavigate } from "react-router-dom";
 
-const QuickStart = () => {
+const QuickMealOptions = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const navigate = useNavigate();
   return (
     <Box sx={{ mt: "6vh" }}>
       <Grid
@@ -38,13 +40,14 @@ const QuickStart = () => {
                 fontWeight: 600,
               }}
             >
-              Recipe Builder
+              Meal Options
             </Typography>
           </Paper>
         </Grid>
 
-        <Grid item sx={{ mb: "1em" }} sx={{ mb: "1em" }}>
+        <Grid item sx={{ mb: "1em" }}>
           <Button
+            onClick={() => navigate("/Quick-Meal-Options")}
             sx={{
               color: colors.white[500],
               padding: "10px 8rem",
@@ -253,4 +256,4 @@ const QuickStart = () => {
   );
 };
 
-export default QuickStart;
+export default QuickMealOptions;

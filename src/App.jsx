@@ -7,7 +7,8 @@ import Home from "./pages/Home";
 import { ColorModeContext, useMode } from "./theme";
 import Topbar from "./components/global/Topbar";
 import Login from "./pages/Login";
-import QuickStart from "./pages/QuickStart";
+import QuickStart from "./pages/quickstart/QuickStart";
+import QuickMealOptions from "./pages/quickstart/QuickMealOptions";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -24,6 +25,10 @@ function App() {
               <Route path="/Home" element={<Home />} />
               <Route path="/Login" element={<Login />} />\
               <Route path="/Quick-Start" element={<QuickStart />} />
+              <Route
+                path="/Quick-Meal-Options"
+                element={<QuickMealOptions />}
+              />
             </Routes>
           </main>
         </div>
