@@ -162,3 +162,13 @@ html,
     fixed;
   background-size: cover;
 }
+
+.MuiSlider-markLabel {
+  color: #e9816c !important;
+  font-weight: 900;
+  font-family: "Mulish !important";
+}
+
+.MuiSlider-markLabelActive {
+  color: #e36147 !important;
+}

@@ -29,7 +29,7 @@ const QuickStart = () => {
         <Grid item sx={{ margin: "0 0 10vh 0" }}>
           <Paper
             sx={{
-              padding: "10px 4rem",
+              padding: "0.4rem 4rem",
               borderRadius: "20px",
               backgroundColor: colors.secondary[900],
             }}
@@ -47,10 +47,10 @@ const QuickStart = () => {
 
         <Grid item sx={{ mb: "1em" }}>
           <Button
-            onClick={() => navigate("/Quick-Meal-Options")}
+            onClick={() => navigate("/Quick-Recipe")}
             sx={{
               color: colors.white[500],
-              padding: "10px 8rem",
+              padding: "0.4rem 8rem",
               minWidth: "5rem",
               maxWidth: "5rem",
               whiteSpace: "nowrap",
@@ -58,10 +58,12 @@ const QuickStart = () => {
               backgroundColor: colors.orangeAccent[500],
               boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
               "&:hover": {
-                backgroundColor: colors.orangeAccent[400],
+                backgroundColor: colors.orangeAccent[600],
+                boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
               },
               "&:active": {
                 backgroundColor: colors.orangeAccent[600],
+                boxShadow: "0px 6px 6px 0px rgba(0, 0, 0, 0.42)",
               },
             }}
           >
@@ -80,15 +82,15 @@ const QuickStart = () => {
           <Button
             sx={{
               color: colors.white[500],
-              padding: "10px 8rem",
+              padding: "0.4rem 8rem",
               minWidth: "5rem",
               maxWidth: "5rem",
               whiteSpace: "nowrap",
               borderRadius: "14px",
-              backgroundColor: colors.secondary[400],
+              backgroundColor: colors.secondary[600],
               boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
               "&:hover": {
-                backgroundColor: colors.secondary[300],
+                backgroundColor: colors.secondary[400],
                 boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
               },
               "&:active": {
@@ -113,7 +115,7 @@ const QuickStart = () => {
             disabled
             sx={{
               color: colors.white[500],
-              padding: "10px 8rem",
+              padding: "0.4rem 8rem",
               minWidth: "5rem",
               maxWidth: "5rem",
               whiteSpace: "nowrap",
@@ -155,15 +157,14 @@ const QuickStart = () => {
                   mb: "8px",
                   width: "1.7em",
                   height: "1.7em",
+                  boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
                   "&:hover": {
-                    backgroundColor: colors.orangeAccent[400],
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
                   },
                   "&:active": {
                     backgroundColor: colors.orangeAccent[600],
-                  },
-                  "&:disabled": {
-                    color: colors.white[700],
-                    boxShadow: "inset 0 0 10px rgba(0, 0, 0, 0.2)",
+                    boxShadow: "0px 6px 6px 0px rgba(0, 0, 0, 0.42)",
                   },
                 }}
               >
@@ -189,15 +190,14 @@ const QuickStart = () => {
                   mb: "8px",
                   width: "1.7em",
                   height: "1.7em",
+                  boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
                   "&:hover": {
-                    backgroundColor: colors.orangeAccent[400],
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
                   },
                   "&:active": {
                     backgroundColor: colors.orangeAccent[600],
-                  },
-                  "&:disabled": {
-                    color: colors.white[700],
-                    boxShadow: "inset 0 0 10px rgba(0, 0, 0, 0.2)",
+                    boxShadow: "0px 6px 6px 0px rgba(0, 0, 0, 0.42)",
                   },
                 }}
               >
@@ -223,15 +223,14 @@ const QuickStart = () => {
                   mb: "8px",
                   width: "1.7em",
                   height: "1.7em",
+                  boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
                   "&:hover": {
-                    backgroundColor: colors.orangeAccent[400],
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
                   },
                   "&:active": {
                     backgroundColor: colors.orangeAccent[600],
-                  },
-                  "&:disabled": {
-                    color: colors.white[700],
-                    boxShadow: "inset 0 0 10px rgba(0, 0, 0, 0.2)",
+                    boxShadow: "0px 6px 6px 0px rgba(0, 0, 0, 0.42)",
                   },
                 }}
               >
