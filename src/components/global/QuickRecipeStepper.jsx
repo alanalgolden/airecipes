@@ -17,6 +17,7 @@ import QuickMealOptions from "../../pages/quickstart/QuickMealOptions";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
 import QuickMealChoices from "../../pages/quickstart/QuickMealChoices";
+import QuickMealIngredients from "../../pages/quickstart/QuickMealIngredients";
 
 const steps = [
   `Meal Options`,
@@ -47,6 +48,9 @@ const QuickRecipeStepper = () => {
     allergies,
     setAllergies,
     resetFilters,
+    mealStyle,
+    setMealStyle,
+    mealIngredients,
   } = useQuickFilters();
 
   const conditionalComponent = () => {
@@ -56,7 +60,7 @@ const QuickRecipeStepper = () => {
       case 1:
         return <QuickMealChoices />;
       case 2:
-        return;
+        return <QuickMealIngredients />;
       default:
         return;
     }
@@ -85,7 +89,20 @@ const QuickRecipeStepper = () => {
             <Button
               size="small"
               onClick={() => setPage(page + 1)}
-              disabled={page === 5}
+              disabled={
+                page === 5 ||
+                //TODO: THIS MAY NEED TO BE REVISED - I'm not sure if it's properly disabling it
+                (page === 0 && mealType === null) ||
+                (page === 0 && servingSize === null) ||
+                (page === 1 && mealStyle === null) ||
+                (page === 2 && mealIngredients === null)
+              }
+              sx={{
+                fontFamily: "Roboto Slab !important",
+                visibility: page === 5 ? "hidden" : "visible",
+                color: colors.white[100],
+                color: colors.white[100],
+              }}
             >
               Next
               {theme.direction === "rtl" ? (
@@ -100,6 +117,11 @@ const QuickRecipeStepper = () => {
               size="small"
               onClick={() => setPage(page - 1)}
               disabled={page === 0}
+              sx={{
+                fontFamily: "Roboto Slab !important",
+                visibility: page === 0 ? "hidden" : "visible",
+                color: colors.white[100],
+              }}
             >
               {theme.direction === "rtl" ? (
                 <ArrowCircleRightOutlinedIcon />

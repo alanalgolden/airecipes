@@ -24,8 +24,15 @@ const QuickMealOptions = () => {
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
 
-  const { servingSize, setServingSize, mealType, setMealType, resetFilters } =
-    useQuickFilters();
+  const {
+    servingSize,
+    setServingSize,
+    mealType,
+    setMealType,
+    mealStyle,
+    setMealStyle,
+    resetFilters,
+  } = useQuickFilters();
 
   const handleClose = () => {
     setOpen(false);
@@ -259,7 +266,12 @@ const QuickMealOptions = () => {
           <Grid item sx={{ m: "1em" }}>
             <Grid gridRow={1}>
               <Button
-                onClick={() => setMealType("Breakfast")}
+                onClick={() => {
+                  setMealType("Breakfast");
+                  if (mealStyle !== null && mealType !== "Breakfast") {
+                    setMealStyle(null);
+                  }
+                }}
                 sx={{
                   color:
                     theme.palette.mode === "dark"
@@ -299,7 +311,12 @@ const QuickMealOptions = () => {
                 </Typography>
               </Button>
               <Button
-                onClick={() => setMealType("Lunch")}
+                onClick={() => {
+                  setMealType("Lunch");
+                  if (mealStyle !== null && mealType !== "Lunch") {
+                    setMealStyle(null);
+                  }
+                }}
                 sx={{
                   color:
                     theme.palette.mode === "dark"
@@ -341,7 +358,12 @@ const QuickMealOptions = () => {
             </Grid>
             <Grid gridRow={2}>
               <Button
-                onClick={() => setMealType("Dinner")}
+                onClick={() => {
+                  setMealType("Dinner");
+                  if (mealStyle !== null && mealType !== "Dinner") {
+                    setMealStyle(null);
+                  }
+                }}
                 sx={{
                   color:
                     theme.palette.mode === "dark"
@@ -381,7 +403,12 @@ const QuickMealOptions = () => {
                 </Typography>
               </Button>
               <Button
-                onClick={() => setMealType("Snack")}
+                onClick={() => {
+                  setMealType("Snack");
+                  if (mealStyle !== null && mealType !== "Snack") {
+                    setMealStyle(null);
+                  }
+                }}
                 sx={{
                   color:
                     theme.palette.mode === "dark"

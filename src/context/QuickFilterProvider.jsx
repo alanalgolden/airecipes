@@ -8,10 +8,13 @@ export const QuickFilterProvider = ({ children }) => {
   const [servingSize, setServingSize] = useState(null);
   const [mealType, setMealType] = useState(null);
   const [allergies, setAllergies] = useState([]);
+  const [mealStyle, setMealStyle] = useState(null);
+  const [mealIngredients, setMealIngredients] = useState(null);
 
   const resetFilters = () => {
     setServingSize(null);
     setMealType(null);
+    setMealStyle(null);
     setAllergies([]);
   };
 
@@ -22,6 +25,10 @@ export const QuickFilterProvider = ({ children }) => {
     setMealType,
     allergies,
     setAllergies,
+    mealStyle,
+    setMealStyle,
+    mealIngredients,
+    setMealIngredients,
     resetFilters,
   };
 

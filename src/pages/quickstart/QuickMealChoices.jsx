@@ -1,16 +1,26 @@
-import { Box, Paper, Typography, IconButton, Grid } from "@mui/material";
+import {
+  Box,
+  Paper,
+  Typography,
+  IconButton,
+  Grid,
+  Button,
+} from "@mui/material";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { useNavigate } from "react-router-dom";
 import { useQuickFilters } from "../../context/QuickFilterProvider";
+import React, { useRef, useEffect } from "react";
+import QuickMealChoicesButtons from "./QuickMealChoicesButtons";
 
 const QuickMealType = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();
 
-  const { resetFilters } = useQuickFilters();
+  const { mealType, setMealType, mealStyle, setMealStyle, resetFilters } =
+    useQuickFilters();
 
   return (
     <>
@@ -43,7 +53,7 @@ const QuickMealType = () => {
                         : colors.secondary[900],
                   }}
                 >
-                  Meal Choices
+                  {mealType} Choices
                 </Typography>
               </Paper>
               <Box
@@ -87,9 +97,215 @@ const QuickMealType = () => {
                       : colors.secondary[900],
                 }}
               >
-                Servings
+                {`${mealType} Styles`}
               </Typography>
             </Paper>
+          </Grid>
+
+          <Grid item sx={{ m: "1em" }}>
+            <Grid gridRow={1}>
+              <QuickMealChoicesButtons />
+              {/*               <Button
+                onClick={() => setMealStyle(dinnerStyles[0])}
+                sx={{
+                  color:
+                    theme.palette.mode === "dark"
+                      ? colors.secondary[100]
+                      : colors.secondary[900],
+                  padding: "0.4rem 7rem",
+                  m: "0.6rem 0.4rem",
+                  minWidth: "2rem",
+                  maxWidth: "2rem",
+                  whiteSpace: "nowrap",
+                  borderRadius: "14px",
+                  backgroundColor:
+                    mealStyle === dinnerStyles[0]
+                      ? colors.orangeAccent[500]
+                      : !mealStyle
+                      ? colors.orangeAccent[500]
+                      : colors.orangeAccent[700],
+                  boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
+                  "&:hover": {
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
+                  },
+                  "&:active": {
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 6px 6px 0px rgba(0, 0, 0, 0.42)",
+                  },
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "Mulish !important",
+                    fontWeight: 900,
+                    fontSize: "0.8rem",
+                  }}
+                >
+                  {dinnerStyles[0]}
+                </Typography>
+              </Button>
+              <Button
+                onClick={() => setMealType("Breakfast")}
+                sx={{
+                  color:
+                    theme.palette.mode === "dark"
+                      ? colors.secondary[100]
+                      : colors.secondary[900],
+                  padding: "0.4rem 7rem",
+                  m: "0.6rem 0.4rem",
+                  minWidth: "2rem",
+                  maxWidth: "2rem",
+                  whiteSpace: "nowrap",
+                  borderRadius: "14px",
+                  backgroundColor:
+                    mealType === "Breakfast"
+                      ? colors.orangeAccent[500]
+                      : !mealType
+                      ? colors.orangeAccent[500]
+                      : colors.orangeAccent[700],
+                  boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
+                  "&:hover": {
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
+                  },
+                  "&:active": {
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 6px 6px 0px rgba(0, 0, 0, 0.42)",
+                  },
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "Mulish !important",
+                    fontWeight: 900,
+                    fontSize: "0.8rem",
+                  }}
+                >
+                  {dinnerStyles[2]}
+                </Typography>
+              </Button>
+              <Button
+                onClick={() => setMealType("Breakfast")}
+                sx={{
+                  color:
+                    theme.palette.mode === "dark"
+                      ? colors.secondary[100]
+                      : colors.secondary[900],
+                  padding: "0.4rem 7rem",
+                  m: "0.6rem 0.4rem",
+                  minWidth: "2rem",
+                  maxWidth: "2rem",
+                  whiteSpace: "nowrap",
+                  borderRadius: "14px",
+                  backgroundColor:
+                    mealType === "Breakfast"
+                      ? colors.orangeAccent[500]
+                      : !mealType
+                      ? colors.orangeAccent[500]
+                      : colors.orangeAccent[700],
+                  boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
+                  "&:hover": {
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
+                  },
+                  "&:active": {
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 6px 6px 0px rgba(0, 0, 0, 0.42)",
+                  },
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "Mulish !important",
+                    fontWeight: 900,
+                    fontSize: "0.8rem",
+                  }}
+                >
+                  {dinnerStyles[3]}
+                </Typography>
+              </Button>
+              <Button
+                onClick={() => setMealType("Breakfast")}
+                sx={{
+                  color:
+                    theme.palette.mode === "dark"
+                      ? colors.secondary[100]
+                      : colors.secondary[900],
+                  padding: "0.4rem 7rem",
+                  m: "0.6rem 0.4rem",
+                  minWidth: "2rem",
+                  maxWidth: "2rem",
+                  whiteSpace: "nowrap",
+                  borderRadius: "14px",
+                  backgroundColor:
+                    mealType === "Breakfast"
+                      ? colors.orangeAccent[500]
+                      : !mealType
+                      ? colors.orangeAccent[500]
+                      : colors.orangeAccent[700],
+                  boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
+                  "&:hover": {
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
+                  },
+                  "&:active": {
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 6px 6px 0px rgba(0, 0, 0, 0.42)",
+                  },
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "Mulish !important",
+                    fontWeight: 900,
+                    fontSize: "0.8rem",
+                  }}
+                >
+                  {dinnerStyles[4]}
+                </Typography>
+              </Button>
+              <Button
+                onClick={() => setMealType("Breakfast")}
+                sx={{
+                  color:
+                    theme.palette.mode === "dark"
+                      ? colors.secondary[100]
+                      : colors.secondary[900],
+                  padding: "0.4rem 7rem",
+                  m: "0.6rem 0.4rem",
+                  minWidth: "2rem",
+                  maxWidth: "2rem",
+                  whiteSpace: "nowrap",
+                  borderRadius: "14px",
+                  backgroundColor:
+                    mealType === "Breakfast"
+                      ? colors.orangeAccent[500]
+                      : !mealType
+                      ? colors.orangeAccent[500]
+                      : colors.orangeAccent[700],
+                  boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
+                  "&:hover": {
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
+                  },
+                  "&:active": {
+                    backgroundColor: colors.orangeAccent[600],
+                    boxShadow: "0px 6px 6px 0px rgba(0, 0, 0, 0.42)",
+                  },
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "Mulish !important",
+                    fontWeight: 900,
+                    fontSize: "0.8rem",
+                  }}
+                >
+                  {dinnerStyles[4]}
+                </Typography>
+              </Button> */}
+            </Grid>
           </Grid>
         </Grid>
       </Box>
