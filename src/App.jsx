@@ -10,6 +10,7 @@ import QuickStart from "./pages/quickstart/QuickStart";
 import QuickMealOptions from "./pages/quickstart/QuickMealOptions";
 import Form from "./components/global/recipeForm";
 import QuickRecipeStepper from "./components/global/QuickRecipeStepper";
+import PantryBuilderStepper from "./components/global/PantryBuilderStepper";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -32,6 +33,10 @@ function App() {
               />
               <Route path="/QuickMeal" element={<Form />} />
               <Route path="/Quick-Recipe" element={<QuickRecipeStepper />} />
+              <Route
+                path="/Pantry-Builder"
+                element={<PantryBuilderStepper />}
+              />
             </Routes>
           </main>
         </div>

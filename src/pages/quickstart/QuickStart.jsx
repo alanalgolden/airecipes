@@ -80,6 +80,7 @@ const QuickStart = () => {
 
         <Grid item sx={{ mb: "1em" }}>
           <Button
+            onClick={() => navigate("/Pantry-Builder")}
             sx={{
               color: colors.white[500],
               padding: "0.4rem 8rem",

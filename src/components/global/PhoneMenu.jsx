@@ -73,9 +73,14 @@ const PhoneMenu = () => {
           </IconButton>
         </Box>
         <List>
-          <ListItem onClick={handleDrawerToggle} sx={{ width: "40vw" }}>
+          <ListItem
+            onClick={() => {
+              handleDrawerToggle();
+              navigate("/Quick-Start");
+            }}
+            sx={{ width: "40vw" }}
+          >
             Home
-            {/* <ListItemText primary={item.text} /> */}
           </ListItem>
         </List>
       </Drawer>

@@ -12,7 +12,6 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { useNavigate } from "react-router-dom";
 import { useQuickFilters } from "../../context/QuickFilterProvider";
-import QuickMealChoicesButtons from "./QuickMealChoicesButtons";
 
 const QuickMealIngredients = () => {
   const theme = useTheme();
