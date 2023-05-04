@@ -1,4 +1,4 @@
-import React, { useContext, useId, useState } from "react";
+import React, { useContext, useEffect, useId, useState } from "react";
 import {
   Box,
   Paper,
@@ -21,6 +21,7 @@ import {
   serverAddUserPantryIngredients,
   serverCheckForUserPantryIngredients,
   serverCreateUserPantryIngredients,
+  funcGetUserPantryIngredients,
 } from "../../components/crud/PantryCrud";
 import { UserContext } from "../../context/UserProvider";
 import PantryIngredientsMap from "./PantryIngredientsMap";
@@ -34,6 +35,19 @@ const PantryIngredients = () => {
   const [ingredientInput, setIngredientInput] = useState("");
   const [ingredients, setIngredient] = useState([]);
 
+  useEffect(() => {
+    const getIngredientsFromDB = async () => {
+      const data = await funcGetUserPantryIngredients(user.uid).then(
+        (ingredient) => {
+          setIngredient(ingredient);
+          console.log(ingredient);
+        }
+      );
+    };
+
+    getIngredientsFromDB();
+  }, []);
+
   const {
     pantryMealType,
     setPantryMealType,
@@ -44,6 +58,7 @@ const PantryIngredients = () => {
     resetFilters,
   } = usePantryBuilder();
 
+  //Manages ingredient input doc creation and update
   const handleIngredientInput = async (uid, e) => {
     const docLookup = await serverCheckForUserPantryIngredients(uid);
 
@@ -121,7 +136,7 @@ const PantryIngredients = () => {
             <Grid gridRow={1}>
               <Grid gridRow={1}>
                 <Box display="flex" justifyContent="center" maxWidth="16rem">
-                  {/* Enter Ingredients Box, includes + button and textbox */}
+                  {/* Enter Ingredients Box, + button and textbox */}
                   <Box display="flex" alignContent="center">
                     <IconButton
                       type="submit"
@@ -154,6 +169,8 @@ const PantryIngredients = () => {
                             ingredientType
                           );
                           setDataStatus(`Added Doc ${ingredientInput}`); */
+                          handleIngredientInput(user.uid, ingredientInput);
+                          setDataStatus(`Added Doc ${ingredientInput}`);
                           setIngredientInput("");
                           ev.preventDefault();
                         }
@@ -162,7 +179,35 @@ const PantryIngredients = () => {
                   </Box>
                 </Box>
                 <Box sx={{ mt: "1.2rem" }}>
-                  <PantryIngredientsMap />
+                  {/* This is the list that is displayed to users, pulled from firebase.  */}
+                  <Box>
+                    {ingredients.map((ingredient) => {
+                      return (
+                        <Box
+                          display="flex"
+                          alignContent="center"
+                          alignItems="center"
+                          sx={{
+                            backgroundColor: `${colors.primary[500]}`,
+                            p: "0.2rem 0.2rem",
+                            mb: "0.4rem",
+                          }}
+                        >
+                          <IconButton sx={{ color: colors.white[400] }}>
+                            <ClearIcon />
+                          </IconButton>
+                          <IconButton sx={{ color: colors.white[400] }}>
+                            <EditIcon />
+                          </IconButton>
+                          <Typography
+                            sx={{ ml: "10px", color: colors.white[400] }}
+                          >
+                            {`${ingredient}`}
+                          </Typography>
+                        </Box>
+                      );
+                    })}
+                  </Box>
                 </Box>
               </Grid>
             </Grid>

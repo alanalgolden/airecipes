@@ -97,12 +97,22 @@ export const cacheGetUserPantryIngredients = async (uid) => {
   }
 };
 
-export const funcListUserPantryIngredients = async (uid) => {
+//TODO: This should be mindful of extra firebase reads to reduce cost
+export const funcGetUserPantryIngredients = async (uid) => {
   const docRef = doc(db, "userPantryIngredients", uid);
 
   try {
-    console.log("TODO IS THIS");
+    //Attempts to get Doc From Cache
+    const doc = await getDocFromCache(docRef);
+    const ingredients = doc.data().pantryIngredients;
+    console.log(`Got doc data ${ingredients} from cache!`);
+    return ingredients;
   } catch (e) {
-    return;
+    console.log("Error getting pantry user doc from cache: ", e);
+
+    const doc = await getDocFromServer(docRef);
+    const ingredients = doc.data().pantryIngredients;
+    console.log(`Got doc data ${ingredients} from server!`);
+    return ingredients;
   }
 };

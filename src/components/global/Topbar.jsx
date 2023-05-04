@@ -1,18 +1,20 @@
-import { Avatar, useTheme } from "@mui/material";
-import { useContext } from "react";
-import { ColorModeContext, tokens } from "../../theme";
-import { Link } from "react-router-dom";
-import React from "react";
-import { useDevice } from "../../context/DeviceProvider";
 import {
+  Avatar,
+  Divider,
+  ListItemIcon,
+  Menu,
+  MenuItem,
+  useTheme,
   Button,
   Typography,
   IconButton,
   Toolbar,
   AppBar,
   Box,
-  Container,
 } from "@mui/material";
+import { useContext } from "react";
+import { ColorModeContext, tokens } from "../../theme";
+import { useDevice } from "../../context/DeviceProvider";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { UserContext } from "../../context/UserProvider";
 import PhoneMenu from "./PhoneMenu";
@@ -20,6 +22,10 @@ import { useNavigate } from "react-router";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import { Link } from "react-router-dom";
+import * as React from "react";
+
+import { AccountMenuDesktop, AccountMenuMobile } from "./AccountMenu";
 
 const Topbar = () => {
   const navigate = useNavigate();
@@ -29,12 +35,18 @@ const Topbar = () => {
   const { user } = useContext(UserContext);
   const colorMode = useContext(ColorModeContext);
 
+  //These functions manage the profile menu's state.
+
   return (
+    //
+    // ! Any extral small or small devices use Mobile Topbar
+    //
     ((device === "xs" || device === "sm") && (
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
             <Box sx={{ m: "0 0 0 10px" }}>
+              {/* Top-left hamburger menu, opens from left */}
               <PhoneMenu />
             </Box>
             <Box
@@ -52,7 +64,7 @@ const Topbar = () => {
                 Gluten Free Me!
               </Typography>
             </Box>
-
+            {/* //TODO - Placeholder sign-in, condition on if a user exists */}
             {!user ? (
               <Button
                 onClick={() => navigate("Login")}
@@ -80,24 +92,23 @@ const Topbar = () => {
                 Sign Up
               </Button>
             ) : (
-              <Box sx={{ m: "0 0 0 10px" }}>
-                <IconButton
-                  color="inherit"
-                  edge="end"
-                  aria-label="accessibility options"
-                >
-                  <AccountCircleIcon />
-                </IconButton>
-              </Box>
+              <AccountMenuMobile />
             )}
           </Toolbar>
         </AppBar>
       </Box>
     )) ||
+    //
+    // ! Any medium, large, or extra large devices use Desktop Topbar
+    //
     ((device === "md" || device === "lg" || device === "xl") && (
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
-          <Toolbar variant="dense">
+          <Toolbar
+            variant="dense"
+            display="flex"
+            sx={{ justifyContent: "space-between" }}
+          >
             <IconButton onClick={() => navigate("Quick-Start")}>
               <HomeOutlinedIcon />
             </IconButton>
@@ -129,12 +140,7 @@ const Topbar = () => {
               </Button>
             ) : (
               <Box display="flex" alignItems="center" sx={{ ml: "2vw" }}>
-                <IconButton>
-                  <Avatar
-                    src={user.photoURL}
-                    imgProps={{ referrerPolicy: "no-referrer" }}
-                  />
-                </IconButton>
+                <AccountMenuDesktop />
                 <Box>{`${user.displayName}`}</Box>
                 <Button onClick={() => console.log(user)}>test</Button>
                 <IconButton onClick={colorMode.toggleColorMode}>
