@@ -11,6 +11,7 @@ export const PantryBuilderProvider = ({ children }) => {
   const [pantryMealStyle, setPantryMealStyle] = useState(null);
   const [pantryMealIngredients, setPantryMealIngredients] = useState(null);
   const [pantryChecked, setPantryChecked] = useState(false);
+  const [selectedIngredients, setSelectedIngredients] = useState([]);
 
   //Provided in value to be used by other components. Resets current filters to default.
   const resetFilters = () => {
@@ -19,6 +20,7 @@ export const PantryBuilderProvider = ({ children }) => {
     setPantryMealStyle(null);
     setPantryChecked(false);
     setPantryAllergies([]);
+    setSelectedIngredients([]);
   };
 
   //Add additional states as needed for them to be accessible to other components.
@@ -35,6 +37,8 @@ export const PantryBuilderProvider = ({ children }) => {
     setPantryMealIngredients,
     pantryChecked,
     setPantryChecked,
+    selectedIngredients,
+    setSelectedIngredients,
     resetFilters,
   };
 

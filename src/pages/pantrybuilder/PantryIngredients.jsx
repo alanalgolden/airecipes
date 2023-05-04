@@ -8,6 +8,7 @@ import {
   Button,
   TextField,
   Divider,
+  Radio,
 } from "@mui/material";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { useTheme } from "@mui/material";
@@ -22,9 +23,9 @@ import {
   serverCheckForUserPantryIngredients,
   serverCreateUserPantryIngredients,
   funcGetUserPantryIngredients,
+  serverDeleteUserPantryIngredients,
 } from "../../components/crud/PantryCrud";
 import { UserContext } from "../../context/UserProvider";
-import PantryIngredientsMap from "./PantryIngredientsMap";
 
 const PantryIngredients = () => {
   const theme = useTheme();
@@ -32,8 +33,10 @@ const PantryIngredients = () => {
   const navigate = useNavigate();
   const id = useId();
   const { user } = useContext(UserContext);
+  const uid = user.uid;
   const [ingredientInput, setIngredientInput] = useState("");
   const [ingredients, setIngredient] = useState([]);
+  const [dataStatus, setDataStatus] = useState();
 
   useEffect(() => {
     const getIngredientsFromDB = async () => {
@@ -45,8 +48,9 @@ const PantryIngredients = () => {
       );
     };
 
+    console.log("EFFECT RAN");
     getIngredientsFromDB();
-  }, []);
+  }, [, dataStatus]);
 
   const {
     pantryMealType,
@@ -55,6 +59,8 @@ const PantryIngredients = () => {
     setPantryMealStyle,
     pantryChecked,
     setPantryChecked,
+    selectedIngredients,
+    setSelectedIngredients,
     resetFilters,
   } = usePantryBuilder();
 
@@ -63,17 +69,55 @@ const PantryIngredients = () => {
     const docLookup = await serverCheckForUserPantryIngredients(uid);
 
     if (docLookup === false && pantryChecked === false) {
-      serverCreateUserPantryIngredients(uid, e);
+      await serverCreateUserPantryIngredients(uid, e);
       setPantryChecked(false);
       console.log("FALSE USER");
     } else {
-      serverAddUserPantryIngredients(uid, e);
-      console.log("TRUE USER");
+      const wtf = await serverAddUserPantryIngredients(uid, e);
+      setDataStatus(`Added Doc ${ingredientInput}`);
+      console.log(wtf);
     }
   };
 
+  //Manages deleting inredients
+  const handleDeleteIngredient = async (uid, ingredient) => {
+    const deleteIngredient = await serverDeleteUserPantryIngredients(
+      uid,
+      ingredient
+    );
+    setDataStatus(`Removed ${ingredient}`);
+  };
+
+  const handleSelect = (event) => {
+    const ingredient = event.target.value;
+    if (selectedIngredients.includes(ingredient)) {
+      removeIngredient(ingredient);
+      console.log(`Removed ${ingredient} from selectedIngredients`);
+    } else {
+      addIngredient(ingredient);
+      console.log(`Added ${ingredient} to selectedIngredients`);
+    }
+  };
+
+  function addIngredient(ingredient) {
+    setSelectedIngredients((prevIngredients) => [
+      ...prevIngredients,
+      ingredient,
+    ]);
+  }
+
+  function removeIngredient(ingredient) {
+    const newIngredients = selectedIngredients.filter(
+      (item) => item !== ingredient
+    );
+    setSelectedIngredients(newIngredients);
+  }
+
   return (
     <>
+      <Button onClick={() => console.log(selectedIngredients.length)}>
+        Test
+      </Button>
       <Box sx={{ mt: "4vh" }}>
         <Grid
           container
@@ -142,12 +186,6 @@ const PantryIngredients = () => {
                       type="submit"
                       onClick={() => {
                         handleIngredientInput(user.uid, ingredientInput);
-                        /*                         updateIngredientArray(
-                          idd,
-                          ingredientInput,
-                          ingredientType
-                        ); */
-                        /* setDataStatus(`Added Doc ${ingredientInput}`);  */
                         setIngredientInput("");
                       }}
                     >
@@ -163,14 +201,7 @@ const PantryIngredients = () => {
                       }
                       onKeyDown={(ev) => {
                         if (ev.key === "Enter") {
-                          /*                        updateIngredientArray(
-                            idd,
-                            ingredientInput,
-                            ingredientType
-                          );
-                          setDataStatus(`Added Doc ${ingredientInput}`); */
                           handleIngredientInput(user.uid, ingredientInput);
-                          setDataStatus(`Added Doc ${ingredientInput}`);
                           setIngredientInput("");
                           ev.preventDefault();
                         }
@@ -183,28 +214,52 @@ const PantryIngredients = () => {
                   <Box>
                     {ingredients.map((ingredient) => {
                       return (
-                        <Box
-                          display="flex"
-                          alignContent="center"
-                          alignItems="center"
-                          sx={{
-                            backgroundColor: `${colors.primary[500]}`,
-                            p: "0.2rem 0.2rem",
-                            mb: "0.4rem",
-                          }}
-                        >
-                          <IconButton sx={{ color: colors.white[400] }}>
-                            <ClearIcon />
-                          </IconButton>
-                          <IconButton sx={{ color: colors.white[400] }}>
-                            <EditIcon />
-                          </IconButton>
-                          <Typography
-                            sx={{ ml: "10px", color: colors.white[400] }}
+                        <Grid item>
+                          <Box
+                            display="flex"
+                            sx={{
+                              backgroundColor: `${colors.primary[500]}`,
+                              p: "0.2rem 0.2rem",
+                              mb: "0.4rem",
+                            }}
                           >
-                            {`${ingredient}`}
-                          </Typography>
-                        </Box>
+                            <IconButton
+                              onClick={() =>
+                                handleDeleteIngredient(uid, ingredient)
+                              }
+                              sx={{ color: colors.white[400] }}
+                            >
+                              <ClearIcon />
+                            </IconButton>
+                            <Box
+                              display="flex"
+                              alignItems="center"
+                              justifyContent="space-between"
+                              sx={{ flexGrow: 1 }}
+                            >
+                              <Typography
+                                sx={{ ml: "10px", color: colors.white[400] }}
+                              >
+                                {`${ingredient}`}
+                              </Typography>
+
+                              <Radio
+                                checked={selectedIngredients.includes(
+                                  ingredient
+                                )}
+                                onClick={handleSelect}
+                                value={ingredient}
+                                name={ingredient}
+                                inputProps={{ "aria-label": `${ingredient}` }}
+                                sx={{
+                                  "&.Mui-checked": {
+                                    color: colors.white[400],
+                                  },
+                                }}
+                              />
+                            </Box>
+                          </Box>
+                        </Grid>
                       );
                     })}
                   </Box>

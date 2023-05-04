@@ -33,14 +33,6 @@ const PantryBuilderStepper = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
   const {
     servingSize,
     setServingSize,
@@ -52,7 +44,25 @@ const PantryBuilderStepper = () => {
     mealStyle,
     setMealStyle,
     mealIngredients,
+    selectedIngredients,
+    setSelectedIngredients,
   } = useQuickFilters();
+
+  const progressHold = () => {
+    if (selectedIngredients.length === undefined) {
+      return console.log("undefined");
+    } else {
+      return selectedIngredients.length;
+    }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   const conditionalComponent = () => {
     switch (page) {
@@ -84,10 +94,7 @@ const PantryBuilderStepper = () => {
               disabled={
                 page === 5 ||
                 //TODO: THIS MAY NEED TO BE REVISED - I'm not sure if it's properly disabling it
-                (page === 0 && mealType === null) ||
-                (page === 0 && servingSize === null) ||
-                (page === 1 && mealStyle === null) ||
-                (page === 2 && mealIngredients === null)
+                (page === 0 && progressHold === 0)
               }
               sx={{
                 fontFamily: "Roboto Slab !important",
