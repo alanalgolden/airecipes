@@ -13,12 +13,10 @@ import {
 import { tokens } from "../../theme";
 import { useState } from "react";
 import { useQuickFilters } from "../../context/QuickFilterProvider";
-import QuickMealOptions from "../../pages/quickstart/QuickMealOptions";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
-import QuickMealChoices from "../../pages/quickstart/QuickMealChoices";
-import QuickMealIngredients from "../../pages/quickstart/QuickMealIngredients";
 import PantryIngredients from "../../pages/pantrybuilder/PantryIngredients";
+import RecipeStart from "../../pages/recipebuilder/RecipeStart";
 
 const steps = [
   `Meal Options`,
@@ -67,9 +65,9 @@ const PantryBuilderStepper = () => {
   const conditionalComponent = () => {
     switch (page) {
       case 0:
-        return <PantryIngredients />;
+        return <RecipeStart />;
       case 1:
-        return;
+        return <PantryIngredients />;
       case 2:
         return;
       default:

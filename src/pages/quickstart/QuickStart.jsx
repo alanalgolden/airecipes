@@ -185,6 +185,7 @@ const QuickStart = () => {
             </Box>
             <Box textAlign="center" sx={{ m: "0 2em" }}>
               <IconButton
+                onClick={() => navigate("/Pantry")}
                 sx={{
                   color: colors.white[500],
                   backgroundColor: colors.orangeAccent[500],

@@ -115,9 +115,6 @@ const PantryIngredients = () => {
 
   return (
     <>
-      <Button onClick={() => console.log(selectedIngredients.length)}>
-        Test
-      </Button>
       <Box sx={{ mt: "4vh" }}>
         <Grid
           container

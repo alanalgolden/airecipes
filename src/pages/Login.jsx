@@ -1,5 +1,6 @@
 import { Box, Typography, Button, useTheme } from "@mui/material";
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserProvider";
 import { tokens } from "../theme";
 
@@ -7,9 +8,11 @@ const Login = () => {
   const { handleLogin } = useContext(UserContext);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const navigate = useNavigate();
 
-  const onLoginButtonClick = () => {
-    handleLogin();
+  const onLoginButtonClick = async () => {
+    await handleLogin();
+    navigate("/Quick-Start");
   };
 
   return (

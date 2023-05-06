@@ -112,6 +112,21 @@ const Topbar = () => {
             <IconButton onClick={() => navigate("Quick-Start")}>
               <HomeOutlinedIcon />
             </IconButton>
+            <Box
+              display="flex"
+              justifyContent="center"
+              flexGrow={1}
+              maxHeight="50vh"
+            >
+              <Typography
+                sx={{
+                  fontFamily: "Roboto Slab !important",
+                  fontWeight: 600,
+                }}
+              >
+                Gluten Free Me!
+              </Typography>
+            </Box>
             {!user ? (
               <Button
                 onClick={() => navigate("Login")}
