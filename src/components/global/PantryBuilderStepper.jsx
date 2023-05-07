@@ -17,6 +17,7 @@ import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOu
 import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
 import PantryIngredients from "../../pages/pantrybuilder/PantryIngredients";
 import RecipeStart from "../../pages/recipebuilder/RecipeStart";
+import RecipeDiet from "../../pages/recipebuilder/RecipeDiet";
 
 const steps = [
   `Meal Options`,
@@ -69,7 +70,7 @@ const PantryBuilderStepper = () => {
       case 1:
         return <PantryIngredients />;
       case 2:
-        return;
+        return <RecipeDiet />;
       default:
         return;
     }

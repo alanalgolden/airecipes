@@ -284,16 +284,15 @@ const RecipeStart = () => {
           <Grid item sx={{ m: "1em" }}>
             <Paper
               sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: ".1rem 2rem",
                 borderRadius: "20px",
-                backgroundColor: colors.secondary[600],
+                backgroundColor: colors.secondary[800],
               }}
             >
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-              >
+              <Box display="flex" alignItems="center">
                 <Typography
                   sx={{
                     fontFamily: "Mulish !important",
@@ -301,11 +300,11 @@ const RecipeStart = () => {
                     color:
                       theme.palette.mode === "dark"
                         ? pantryMealCost === "Affordable"
-                          ? colors.blueAccent[500]
-                          : colors.blueAccent[900]
+                          ? colors.orangeAccent[500]
+                          : colors.orangeAccent[900]
                         : pantryMealCost === "Affordable"
-                        ? colors.blueAccent[600]
-                        : colors.blueAccent[900],
+                        ? colors.orangeAccent[600]
+                        : colors.orangeAccent[900],
                   }}
                 >
                   Affordable
@@ -314,16 +313,16 @@ const RecipeStart = () => {
                   checked={pantryMealCost === "Luxurious"}
                   onChange={handleCostChange}
                   sx={{
-                    mr: "0.5em",
-
+                    mr: "2vw",
+                    ml: "2vw",
                     "& .MuiSwitch-track": {
-                      backgroundColor: `${colors.blueAccent[600]}`,
+                      backgroundColor: `${colors.orangeAccent[600]}`,
                     },
 
                     "& .MuiSwitch-thumb": {
-                      color: `${colors.blueAccent[600]}`,
+                      color: `${colors.orangeAccent[600]}`,
                       "&:hover": {
-                        backgroundColor: alpha(colors.blueAccent[300], 0.18),
+                        backgroundColor: alpha(colors.orangeAccent[300], 0.18),
                       },
                     },
 
@@ -365,16 +364,15 @@ const RecipeStart = () => {
           <Grid item sx={{ m: "1em" }}>
             <Paper
               sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: ".1rem 2rem",
                 borderRadius: "20px",
-                backgroundColor: colors.secondary[600],
+                backgroundColor: colors.secondary[800],
               }}
             >
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-              >
+              <Box display="flex" alignItems="center">
                 <Typography
                   sx={{
                     fontFamily: "Mulish !important",
@@ -382,11 +380,11 @@ const RecipeStart = () => {
                     color:
                       theme.palette.mode === "dark"
                         ? pantryMealSpeed === "Cozy"
-                          ? colors.blueAccent[600]
-                          : colors.blueAccent[900]
+                          ? colors.orangeAccent[500]
+                          : colors.orangeAccent[900]
                         : pantryMealSpeed === "Cozy"
-                        ? colors.blueAccent[600]
-                        : colors.blueAccent[900],
+                        ? colors.orangeAccent[600]
+                        : colors.orangeAccent[900],
                   }}
                 >
                   Cozy
@@ -395,16 +393,16 @@ const RecipeStart = () => {
                   checked={pantryMealSpeed === "Quick"}
                   onChange={handleSpeedChange}
                   sx={{
-                    mr: "0.5em",
-
+                    mr: "2vw",
+                    ml: "2vw",
                     "& .MuiSwitch-track": {
-                      backgroundColor: `${colors.blueAccent[600]}`,
+                      backgroundColor: `${colors.orangeAccent[600]}`,
                     },
 
                     "& .MuiSwitch-thumb": {
-                      color: `${colors.blueAccent[600]}`,
+                      color: `${colors.orangeAccent[600]}`,
                       "&:hover": {
-                        backgroundColor: alpha(colors.blueAccent[300], 0.18),
+                        backgroundColor: alpha(colors.orangeAccent[300], 0.18),
                       },
                     },
 
@@ -425,7 +423,7 @@ const RecipeStart = () => {
 
                 <Typography
                   sx={{
-                    fontFamily: "Mulish !important",
+                    fontFamily: "Roboto Slab !important",
                     fontWeight: 900,
                     color:
                       theme.palette.mode === "dark"
@@ -446,16 +444,15 @@ const RecipeStart = () => {
           <Grid item sx={{ m: "1em" }}>
             <Paper
               sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: ".1rem 2rem",
                 borderRadius: "20px",
-                backgroundColor: colors.secondary[600],
+                backgroundColor: colors.secondary[800],
               }}
             >
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-              >
+              <Box display="flex" alignItems="center">
                 <Typography
                   sx={{
                     fontFamily: "Mulish !important",
@@ -463,11 +460,11 @@ const RecipeStart = () => {
                     color:
                       theme.palette.mode === "dark"
                         ? pantryMealComplexity === "Simple"
-                          ? colors.blueAccent[600]
-                          : colors.blueAccent[900]
+                          ? colors.orangeAccent[500]
+                          : colors.orangeAccent[900]
                         : pantryMealComplexity === "Simple"
-                        ? colors.blueAccent[600]
-                        : colors.blueAccent[900],
+                        ? colors.orangeAccent[600]
+                        : colors.orangeAccent[900],
                   }}
                 >
                   Simple
@@ -476,16 +473,16 @@ const RecipeStart = () => {
                   checked={pantryMealComplexity === "Complex"}
                   onChange={handleComplexityChange}
                   sx={{
-                    mr: "0.5em",
-
+                    mr: "2vw",
+                    ml: "2vw",
                     "& .MuiSwitch-track": {
-                      backgroundColor: `${colors.blueAccent[600]}`,
+                      backgroundColor: `${colors.orangeAccent[600]}`,
                     },
 
                     "& .MuiSwitch-thumb": {
-                      color: `${colors.blueAccent[600]}`,
+                      color: `${colors.orangeAccent[600]}`,
                       "&:hover": {
-                        backgroundColor: alpha(colors.blueAccent[300], 0.18),
+                        backgroundColor: alpha(colors.orangeAccent[300], 0.18),
                       },
                     },
 
@@ -506,7 +503,7 @@ const RecipeStart = () => {
 
                 <Typography
                   sx={{
-                    fontFamily: "Mulish !important",
+                    fontFamily: "Roboto Slab !important",
                     fontWeight: 900,
                     color:
                       theme.palette.mode === "dark"

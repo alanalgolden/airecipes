@@ -87,9 +87,7 @@ const PantryIngredients = () => {
     );
     setDataStatus(`Removed ${ingredient}`);
   };
-
-  const handleSelect = (event) => {
-    const ingredient = event.target.value;
+  function handleSelect(ingredient) {
     if (selectedIngredients.includes(ingredient)) {
       removeIngredient(ingredient);
       console.log(`Removed ${ingredient} from selectedIngredients`);
@@ -97,7 +95,7 @@ const PantryIngredients = () => {
       addIngredient(ingredient);
       console.log(`Added ${ingredient} to selectedIngredients`);
     }
-  };
+  }
 
   function addIngredient(ingredient) {
     setSelectedIngredients((prevIngredients) => [
@@ -211,12 +209,19 @@ const PantryIngredients = () => {
                   <Box>
                     {ingredients.map((ingredient) => {
                       return (
-                        <Grid item>
+                        <Grid item key={ingredient}>
                           <Box
                             display="flex"
                             sx={{
-                              backgroundColor: `${colors.primary[500]}`,
+                              backgroundColor: selectedIngredients.includes(
+                                ingredient
+                              )
+                                ? `${colors.primary[500]}`
+                                : `${colors.primary[600]}`,
                               p: "0.2rem 0.2rem",
+                              width: selectedIngredients.includes(ingredient)
+                                ? "105%"
+                                : "100%",
                               mb: "0.4rem",
                             }}
                           >
@@ -233,18 +238,26 @@ const PantryIngredients = () => {
                               alignItems="center"
                               justifyContent="space-between"
                               sx={{ flexGrow: 1 }}
+                              onClick={() => handleSelect(ingredient)}
                             >
                               <Typography
-                                sx={{ ml: "10px", color: colors.white[400] }}
+                                sx={{
+                                  ml: "10px",
+                                  color: colors.white[400],
+                                  fontWeight: selectedIngredients.includes(
+                                    ingredient
+                                  )
+                                    ? 900
+                                    : 400,
+                                }}
                               >
                                 {`${ingredient}`}
                               </Typography>
-
                               <Radio
                                 checked={selectedIngredients.includes(
                                   ingredient
                                 )}
-                                onClick={handleSelect}
+                                onClick={() => handleSelect(ingredient)}
                                 value={ingredient}
                                 name={ingredient}
                                 inputProps={{ "aria-label": `${ingredient}` }}
