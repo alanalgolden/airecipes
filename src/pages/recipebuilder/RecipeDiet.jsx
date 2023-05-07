@@ -20,10 +20,17 @@ import { useEffect } from "react";
 const RecipeDiet = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const navigate = useNavigate();
+
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
-  const dietChoices = ["No Restrictions", "Gluten Free", "Vegan", "Vegetarian"];
+  const dietChoices = [
+    "No Restrictions",
+    "Low Carb",
+    "Vegan",
+    "Vegetarian",
+    "Keto",
+    "Paleo",
+  ];
 
   const { pantryMealDiet, setPantryMealDiet, resetFilters } =
     usePantryBuilder();
@@ -40,87 +47,48 @@ const RecipeDiet = () => {
 
   return (
     <>
-      <Box sx={{ mt: "4vh" }}>
+      <Box>
         <Grid
           container
           direction="column"
           alignItems="center"
           justifyContent="center"
         >
-          <Grid item sx={{ margin: "0 0 5vh 0" }}>
-            <Box display="flex">
-              <Paper
-                sx={{
-                  padding: "10px 4rem",
-                  borderRadius: "20px",
-                  backgroundColor:
-                    theme.palette.mode === "dark"
-                      ? colors.secondary[800]
-                      : colors.secondary[400],
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "Mulish !important",
-                    fontWeight: 900,
-                    color:
-                      theme.palette.mode === "dark"
-                        ? colors.secondary[100]
-                        : colors.secondary[900],
-                  }}
-                >
-                  Select Your Diet
-                </Typography>
-              </Paper>
-              <Box
-                display="flex"
-                justifyContent="left"
-                sx={{
-                  ml: "10px",
-                  color:
-                    theme.palette.mode === "dark"
-                      ? colors.secondary[100]
-                      : colors.secondary[900],
-                }}
-              >
-                <IconButton
-                  onClick={() => {
-                    setValue(0);
-                    resetFilters();
-                    navigate("/Quick-Start");
-                  }}
-                >
-                  <CancelOutlinedIcon />
-                </IconButton>
-              </Box>
-            </Box>
-          </Grid>
-
-          <Grid item sx={{ mb: "1em" }}>
+          {/*           <Grid item sx={{ mb: "1em" }}>
             <Paper
               sx={{
                 padding: ".1rem 2rem",
                 borderRadius: "20px",
-                backgroundColor: colors.secondary[600],
+                backgroundColor: colors.orangeAccent[500],
               }}
             >
               <Typography
                 sx={{
-                  fontFamily: "Mulish !important",
+                  fontFamily: "Roboto Slab !important",
                   fontWeight: 900,
+                  fontStyle: "italic",
                   color:
                     theme.palette.mode === "dark"
                       ? colors.secondary[100]
                       : colors.secondary[900],
                 }}
               >
-                Placeholder
+                {pantryMealDiet === "" ? "Select diet.." : pantryMealDiet}
               </Typography>
             </Paper>
           </Grid>
-
-          <Box sx={{ mt: "1.2rem" }}>
-            {/* This is the list that is displayed to users, pulled from firebase.  */}
+ */}
+          <Box
+            sx={{
+              mt: "1.2rem",
+              overflowY: "auto",
+              height: "60vh",
+              minHeight: "60vh",
+              maxHeight: "60vh",
+              width: "18.3em",
+            }}
+          >
+            {/* This is the list that is displayed to users, pulled from firebase. */}
             <Box>
               {dietChoices.map((diet) => {
                 return (
@@ -132,7 +100,7 @@ const RecipeDiet = () => {
                           ? `${colors.primary[500]}`
                           : `${colors.primary[600]}`,
                         p: "0.2rem 0.2rem",
-                        width: pantryMealDiet.includes(diet) ? "105%" : "100%",
+                        width: pantryMealDiet.includes(diet) ? "98%" : "95%",
                         mb: "0.4rem",
                       }}
                     >
@@ -145,6 +113,7 @@ const RecipeDiet = () => {
                       >
                         <Typography
                           sx={{
+                            fontFamily: "Mulish !important",
                             ml: "10px",
                             color: colors.white[400],
                             fontWeight: pantryMealDiet.includes(diet)

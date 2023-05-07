@@ -113,98 +113,27 @@ const PantryIngredients = () => {
 
   return (
     <>
-      <Box sx={{ mt: "4vh" }}>
+      <Box>
         <Grid
           container
           direction="column"
           alignItems="center"
           justifyContent="center"
         >
-          <Grid item sx={{ margin: "0 0 3vh 0" }}>
-            <Box display="flex">
-              <Paper
-                sx={{
-                  padding: "10px 4rem",
-
-                  borderRadius: "20px",
-                  backgroundColor:
-                    theme.palette.mode === "dark"
-                      ? colors.secondary[800]
-                      : colors.secondary[400],
-                }}
-              >
-                <Typography
-                  sx={{
-                    nowrap: "true",
-                    fontFamily: "Robot Slab !important",
-                    fontWeight: 300,
-                    fontStyle: "italic",
-                    color:
-                      theme.palette.mode === "dark"
-                        ? colors.secondary[100]
-                        : colors.secondary[900],
-                  }}
-                >
-                  Select Ingredients
-                </Typography>
-              </Paper>
-              <Box
-                display="flex"
-                justifyContent="left"
-                sx={{
-                  ml: "10px",
-                  color:
-                    theme.palette.mode === "dark"
-                      ? colors.secondary[100]
-                      : colors.secondary[900],
-                }}
-              >
-                <IconButton
-                  onClick={() => {
-                    resetFilters();
-                    navigate("/Quick-Start");
-                  }}
-                >
-                  <CancelOutlinedIcon />
-                </IconButton>
-              </Box>
-            </Box>
-          </Grid>
-
-          <Grid item sx={{ m: "1em" }}>
+          <Grid item>
             <Grid gridRow={1}>
               <Grid gridRow={1}>
-                <Box display="flex" justifyContent="center" maxWidth="16rem">
-                  {/* Enter Ingredients Box, + button and textbox */}
-                  <Box display="flex" alignContent="center">
-                    <IconButton
-                      type="submit"
-                      onClick={() => {
-                        handleIngredientInput(user.uid, ingredientInput);
-                        setIngredientInput("");
-                      }}
-                    >
-                      <AddIcon />
-                    </IconButton>
-                    <TextField
-                      id={`${id}`}
-                      value={ingredientInput}
-                      label="Enter Ingredients"
-                      placeholder="Enter ingredient name.."
-                      onChange={(event) =>
-                        setIngredientInput(event.target.value)
-                      }
-                      onKeyDown={(ev) => {
-                        if (ev.key === "Enter") {
-                          handleIngredientInput(user.uid, ingredientInput);
-                          setIngredientInput("");
-                          ev.preventDefault();
-                        }
-                      }}
-                    />
-                  </Box>
-                </Box>
-                <Box sx={{ mt: "1.2rem" }}>
+                <Box
+                  sx={{
+                    mt: "1.2rem",
+                    mb: "1.2rem",
+                    overflowY: "auto",
+                    height: "50vh",
+                    minHeight: "50vh",
+                    maxHeight: "50vh",
+                    width: "18.3em",
+                  }}
+                >
                   {/* This is the list that is displayed to users, pulled from firebase.  */}
                   <Box>
                     {ingredients.map((ingredient) => {
@@ -220,8 +149,8 @@ const PantryIngredients = () => {
                                 : `${colors.primary[600]}`,
                               p: "0.2rem 0.2rem",
                               width: selectedIngredients.includes(ingredient)
-                                ? "105%"
-                                : "100%",
+                                ? "98%"
+                                : "95%",
                               mb: "0.4rem",
                             }}
                           >
@@ -272,6 +201,36 @@ const PantryIngredients = () => {
                         </Grid>
                       );
                     })}
+                  </Box>
+                </Box>
+                <Box display="flex" justifyContent="left" width="14.5rem">
+                  {/* Enter Ingredients Box, + button and textbox */}
+                  <Box display="flex" alignContent="center">
+                    <IconButton
+                      type="submit"
+                      onClick={() => {
+                        handleIngredientInput(user.uid, ingredientInput);
+                        setIngredientInput("");
+                      }}
+                    >
+                      <AddIcon />
+                    </IconButton>
+                    <TextField
+                      id={`${id}`}
+                      value={ingredientInput}
+                      label="Enter Ingredients"
+                      placeholder="Enter ingredient name.."
+                      onChange={(event) =>
+                        setIngredientInput(event.target.value)
+                      }
+                      onKeyDown={(ev) => {
+                        if (ev.key === "Enter") {
+                          handleIngredientInput(user.uid, ingredientInput);
+                          setIngredientInput("");
+                          ev.preventDefault();
+                        }
+                      }}
+                    />
                   </Box>
                 </Box>
               </Grid>

@@ -95,62 +95,13 @@ const RecipeStart = () => {
 
   return (
     <>
-      <Box sx={{ mt: "4vh" }}>
+      <Box sx={{ mt: "1.2rem" }}>
         <Grid
           container
           direction="column"
           alignItems="center"
           justifyContent="center"
         >
-          <Grid item sx={{ margin: "0 0 5vh 0" }}>
-            <Box display="flex">
-              <Paper
-                sx={{
-                  padding: "10px 4rem",
-                  borderRadius: "20px",
-                  backgroundColor:
-                    theme.palette.mode === "dark"
-                      ? colors.secondary[800]
-                      : colors.secondary[400],
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "Mulish !important",
-                    fontWeight: 900,
-                    color:
-                      theme.palette.mode === "dark"
-                        ? colors.secondary[100]
-                        : colors.secondary[900],
-                  }}
-                >
-                  Meal Options
-                </Typography>
-              </Paper>
-              <Box
-                display="flex"
-                justifyContent="left"
-                sx={{
-                  ml: "10px",
-                  color:
-                    theme.palette.mode === "dark"
-                      ? colors.secondary[100]
-                      : colors.secondary[900],
-                }}
-              >
-                <IconButton
-                  onClick={() => {
-                    setValue(0);
-                    resetFilters();
-                    navigate("/Quick-Start");
-                  }}
-                >
-                  <CancelOutlinedIcon />
-                </IconButton>
-              </Box>
-            </Box>
-          </Grid>
-
           <Grid item sx={{ mb: "1em" }}>
             <Paper
               sx={{
