@@ -23,6 +23,7 @@ import RecipeDiet from "../../pages/recipebuilder/RecipeDiet";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { useNavigate } from "react-router-dom";
 import RecipeAllergies from "../../pages/recipebuilder/RecipeAllergies";
+import RecipeConfirm from "../../pages/recipebuilder/RecipeConfirm";
 
 const steps = [
   `Meal Options`,
@@ -80,6 +81,8 @@ const PantryBuilderStepper = () => {
         return <RecipeDiet />;
       case 3:
         return <RecipeAllergies />;
+      case 4:
+        return <RecipeConfirm />;
       default:
         return;
     }
@@ -95,6 +98,8 @@ const PantryBuilderStepper = () => {
         return "Select Diet";
       case 3:
         return "Select Allergies";
+      case 4:
+        return "Confirm Recipe";
       default:
         return;
     }
@@ -168,7 +173,7 @@ const PantryBuilderStepper = () => {
         <Box display="flex" justifyContent="center" sx={{ mt: "0.8rem" }}>
           <MobileStepper
             variant="dots"
-            steps={6}
+            steps={5}
             position="static"
             activeStep={page}
             sx={{ maxWidth: "15rem", flexGrow: 1 }}
@@ -177,7 +182,7 @@ const PantryBuilderStepper = () => {
                 size="small"
                 onClick={() => setPage(page + 1)}
                 disabled={
-                  page === 5 ||
+                  page === 4 ||
                   //TODO: THIS MAY NEED TO BE REVISED - I'm not sure if it's properly disabling it
                   (page === 0 && progressHold === 0)
                 }

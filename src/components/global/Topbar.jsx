@@ -156,7 +156,7 @@ const Topbar = () => {
             ) : (
               <Box display="flex" alignItems="center" sx={{ ml: "2vw" }}>
                 <AccountMenuDesktop />
-                <Box>{`${user.displayName}`}</Box>
+                <Box>{`${user.displayName.split(" ")[0]}`}</Box>
                 <Button onClick={() => console.log(user)}>test</Button>
                 <IconButton onClick={colorMode.toggleColorMode}>
                   {theme.palette.mode === "dark" ? (
