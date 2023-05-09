@@ -2,6 +2,7 @@ import * as React from "react";
 import {
   alpha,
   Box,
+  Button,
   Grid,
   IconButton,
   List,
@@ -24,6 +25,10 @@ const RecipeConfirm = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
+
+  /*   const handleGen = async () => {
+    const recipeGen
+  } */
 
   const {
     servingSize,
@@ -49,146 +54,147 @@ const RecipeConfirm = () => {
           <Grid item sx={{ mt: "1.2rem" }}>
             <Paper
               sx={{
-                padding: ".1rem 2rem",
                 borderRadius: "20px",
                 backgroundColor: colors.secondary[800],
                 width: "70vw",
               }}
             >
-              <List>
-                <ListItem>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: colors.orangeAccent[500],
-                      fontFamily: "Mulish !important",
-                      fontWeight: 900,
-                    }}
-                  >
-                    Serving Size:
-                  </Typography>
-                  <Typography
-                    sx={{
-                      ml: "0.4rem",
-                      fontSize: "0.6rem",
-                      fontFamily: "Roboto Slab !important",
-                    }}
-                  >
-                    {servingSize}
-                  </Typography>
-                </ListItem>
-                <ListItem>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: colors.orangeAccent[500],
-                      fontFamily: "Mulish !important",
-                      fontWeight: 900,
-                    }}
-                  >
-                    Cost:
-                  </Typography>
-                  <Typography
-                    sx={{
-                      ml: "0.4rem",
-                      fontSize: "0.6rem",
-                      fontFamily: "Roboto Slab !important",
-                    }}
-                  >
-                    {pantryMealCost}
-                  </Typography>
-                </ListItem>
-                <ListItem>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: colors.orangeAccent[500],
-                      fontFamily: "Mulish !important",
-                      fontWeight: 900,
-                    }}
-                  >
-                    Speed:
-                  </Typography>
-                  <Typography
-                    sx={{
-                      ml: "0.4rem",
-                      fontSize: "0.6rem",
-                      fontFamily: "Roboto Slab !important",
-                    }}
-                  >
-                    {pantryMealSpeed}
-                  </Typography>
-                </ListItem>
-                <ListItem>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: colors.orangeAccent[500],
-                      fontFamily: "Mulish !important",
-                      fontWeight: 900,
-                    }}
-                  >
-                    Complexity:
-                  </Typography>
-                  <Typography
-                    sx={{
-                      ml: "0.4rem",
-                      fontSize: "0.6rem",
-                      fontFamily: "Roboto Slab !important",
-                    }}
-                  >
-                    {pantryMealComplexity}
-                  </Typography>
-                </ListItem>
-                <ListItem>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: colors.orangeAccent[500],
-                      fontFamily: "Mulish !important",
-                      fontWeight: 900,
-                    }}
-                  >
-                    Dietary Restrictions:
-                  </Typography>
-                  <Typography
-                    sx={{
-                      ml: "0.4rem",
-                      fontSize: "0.6rem",
-                      fontFamily: "Roboto Slab !important",
-                    }}
-                  >
-                    {pantryMealDiet}
-                  </Typography>
-                </ListItem>
-                <ListItem>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: colors.orangeAccent[500],
-                      fontFamily: "Mulish !important",
-                      fontWeight: 900,
-                    }}
-                  >
-                    Allergies:
-                  </Typography>
-                  <Typography
-                    sx={{
-                      ml: "0.4rem",
-                      fontSize: "0.6rem",
-                      fontFamily: "Roboto Slab !important",
-                    }}
-                  >
-                    {pantryMealAllergies.join(`, `)}
-                  </Typography>
-                </ListItem>
-              </List>
+              <Box display="flex" alignItems="center">
+                <List>
+                  <ListItem>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        color: colors.orangeAccent[500],
+                        fontFamily: "Mulish !important",
+                        fontWeight: 900,
+                      }}
+                    >
+                      Serving Size:
+                    </Typography>
+                    <Typography
+                      sx={{
+                        ml: "0.4rem",
+                        fontSize: "0.6rem",
+                        fontFamily: "Roboto Slab !important",
+                      }}
+                    >
+                      {servingSize}
+                    </Typography>
+                  </ListItem>
+                  <ListItem>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        color: colors.orangeAccent[500],
+                        fontFamily: "Mulish !important",
+                        fontWeight: 900,
+                      }}
+                    >
+                      Cost:
+                    </Typography>
+                    <Typography
+                      sx={{
+                        ml: "0.4rem",
+                        fontSize: "0.6rem",
+                        fontFamily: "Roboto Slab !important",
+                      }}
+                    >
+                      {pantryMealCost}
+                    </Typography>
+                  </ListItem>
+                  <ListItem>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        color: colors.orangeAccent[500],
+                        fontFamily: "Mulish !important",
+                        fontWeight: 900,
+                      }}
+                    >
+                      Speed:
+                    </Typography>
+                    <Typography
+                      sx={{
+                        ml: "0.4rem",
+                        fontSize: "0.6rem",
+                        fontFamily: "Roboto Slab !important",
+                      }}
+                    >
+                      {pantryMealSpeed}
+                    </Typography>
+                  </ListItem>
+                  <ListItem>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        color: colors.orangeAccent[500],
+                        fontFamily: "Mulish !important",
+                        fontWeight: 900,
+                      }}
+                    >
+                      Complexity:
+                    </Typography>
+                    <Typography
+                      sx={{
+                        ml: "0.4rem",
+                        fontSize: "0.6rem",
+                        fontFamily: "Roboto Slab !important",
+                      }}
+                    >
+                      {pantryMealComplexity}
+                    </Typography>
+                  </ListItem>
+                  <ListItem>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        color: colors.orangeAccent[500],
+                        fontFamily: "Mulish !important",
+                        fontWeight: 900,
+                      }}
+                    >
+                      Diet:
+                    </Typography>
+                    <Typography
+                      sx={{
+                        ml: "0.4rem",
+                        fontSize: "0.6rem",
+                        fontFamily: "Roboto Slab !important",
+                      }}
+                    >
+                      {pantryMealDiet}
+                    </Typography>
+                  </ListItem>
+                  <ListItem>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        color: colors.orangeAccent[500],
+                        fontFamily: "Mulish !important",
+                        fontWeight: 900,
+                      }}
+                    >
+                      Allergies:
+                    </Typography>
+                    <Typography
+                      sx={{
+                        ml: "0.4rem",
+                        fontSize: "0.6rem",
+                        fontFamily: "Roboto Slab !important",
+                      }}
+                    >
+                      {pantryMealAllergies.join(`, `)}
+                    </Typography>
+                  </ListItem>
+                </List>
+              </Box>
             </Paper>
 
             <Paper
               sx={{
                 mt: "1.2rem",
-                padding: ".1rem 2rem",
+                width: "70vw",
                 borderRadius: "20px",
                 backgroundColor: colors.secondary[800],
               }}
@@ -219,6 +225,38 @@ const RecipeConfirm = () => {
             </Paper>
 
             {/* TODO: Add Suggestions based on these choices, use AI for it*/}
+          </Grid>
+          <Grid item sx={{ mt: "1.2rem" }}>
+            <Button
+              sx={{
+                color:
+                  theme.palette.mode === "dark"
+                    ? colors.secondary[100]
+                    : colors.secondary[900],
+                padding: "0.2rem 5rem",
+                m: "0.4rem 0.4rem",
+                minWidth: "2rem",
+                maxWidth: "2rem",
+                whiteSpace: "nowrap",
+                borderRadius: "14px",
+                backgroundColor: colors.orangeAccent[500],
+                boxShadow: "0px 3px 3px 3px rgba(0, 0, 0, 0.2)",
+                "&:hover": {
+                  backgroundColor: colors.orangeAccent[600],
+                  boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.4)",
+                },
+                "&:active": {
+                  backgroundColor: colors.orangeAccent[600],
+                  boxShadow: "0px 6px 6px 0px rgba(0, 0, 0, 0.42)",
+                },
+              }}
+            >
+              <Typography
+                sx={{ fontFamily: "Mulish !important", fontWeight: 800 }}
+              >
+                Generate Recipe
+              </Typography>
+            </Button>
           </Grid>
         </Grid>
       </Box>
