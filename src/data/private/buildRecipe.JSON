@@ -1,0 +1,18 @@
+{
+  "Recipe": {
+    "recipeName": "BLANK",
+    "servingSize": "BLANK",
+    "recipeAllergens": "BLANK",
+    "prepTime": "BLANK",
+    "cookingTime": "BLANK",
+    "approximateCost": "BLANK",
+    "recipeIngredients": [
+      {
+        "name": "BLANK",
+        "quantity": "BLANK"
+      },
+      "* increment and add ingredients as needed"
+    ],
+    "recipeSteps": ["BLANK", "* increment and add steps as needed"]
+  }
+}

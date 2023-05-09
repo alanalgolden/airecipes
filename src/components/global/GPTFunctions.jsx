@@ -1,13 +1,16 @@
 import axios from "axios";
 
-export const getGpt35TurboChatCompletion = async (data) => {
-  const apiKey = process.env.OPEN_AI_API_KEY;
+export const getGpt35TurboChatCompletion = async (data, instructions) => {
+  const apiKey = import.meta.env.VITE_OPEN_AI_API_KEY;
 
   const response = await axios.post(
     "https://api.openai.com/v1/chat/completions",
     {
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: props }],
+      messages: [
+        { role: "user", content: data },
+        { role: "system", content: instructions },
+      ],
     },
     {
       headers: {
@@ -17,11 +20,11 @@ export const getGpt35TurboChatCompletion = async (data) => {
     }
   );
 
-  return response.data.choices[0].text;
+  return response.data.choices[0].message.content;
 };
 
 export const getGpt4ChatCompletion = async (data) => {
-  const apiKey = process.env.OPEN_AI_API_KEY;
+  const apiKey = import.meta.env.VITE_OPEN_AI_API_KEY;
 
   const response = await axios.post(
     "https://api.openai.com/v1/chat/completions",
@@ -41,7 +44,7 @@ export const getGpt4ChatCompletion = async (data) => {
 };
 
 export const getGpt432kChatCompletion = async (data) => {
-  const apiKey = process.env.OPEN_AI_API_KEY;
+  const apiKey = import.meta.env.VITE_OPEN_AI_API_KEY;
 
   const response = await axios.post(
     "https://api.openai.com/v1/chat/completions",
@@ -57,5 +60,5 @@ export const getGpt432kChatCompletion = async (data) => {
     }
   );
 
-  return response.data.choices[0].text;
+  return response;
 };

@@ -18,6 +18,9 @@ import { useNavigate } from "react-router-dom";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { usePantryBuilder } from "../../context/PantryBuilderProvider";
 import { useEffect } from "react";
+import buildRecipeSTRING from "../../data/private/buildRecipe";
+import { getGpt35TurboChatCompletion } from "../../components/global/GPTFunctions";
+import recipeInstructions from "../../data/private/recipeInstructions";
 
 const RecipeConfirm = () => {
   const theme = useTheme();
@@ -25,10 +28,6 @@ const RecipeConfirm = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
-
-  /*   const handleGen = async () => {
-    const recipeGen
-  } */
 
   const {
     servingSize,
@@ -41,6 +40,30 @@ const RecipeConfirm = () => {
     pantryMealAllergySeverity,
     resetFilters,
   } = usePantryBuilder();
+
+  const handleGen = async () => {
+    try {
+      console.log("Attempted to generate recipe.");
+      const string = buildRecipeSTRING({
+        servingSize,
+        pantryMealCost,
+        pantryMealSpeed,
+        pantryMealDiet,
+        pantryMealAllergies,
+        selectedIngredients,
+      });
+      const instructions = recipeInstructions;
+      /*       console.log(`TEST INSTRUCTIONS ${instructions}`); */
+      console.log(`TEST STRING ${string}`);
+      const recipe = await getGpt35TurboChatCompletion(
+        `${string}`,
+        `${instructions}`
+      );
+      console.log(recipe);
+    } catch (e) {
+      console.error(`LOG FROM handleGen + ${e}`);
+    }
+  };
 
   return (
     <>
@@ -228,6 +251,7 @@ const RecipeConfirm = () => {
           </Grid>
           <Grid item sx={{ mt: "1.2rem" }}>
             <Button
+              onClick={() => handleGen()}
               sx={{
                 color:
                   theme.palette.mode === "dark"
