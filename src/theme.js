@@ -1,5 +1,6 @@
 import { createContext, useState, useMemo } from "react";
 import { createTheme } from "@mui/material/styles";
+import { Gradient } from "@mui/icons-material";
 
 // color design tokens
 export const tokens = (mode) => ({
@@ -228,8 +229,9 @@ export const themeSettings = (mode) => {
               main: colors.secondary[500],
               light: colors.secondary[100],
             },
+
             background: {
-              default: colors.primary[700], //colors.primary[500],
+              default: colors.primary[500],
             },
           }
         : {

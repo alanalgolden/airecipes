@@ -101,7 +101,6 @@ const QuickRecipeStepper = () => {
                 fontFamily: "Roboto Slab !important",
                 visibility: page === 5 ? "hidden" : "visible",
                 color: colors.white[100],
-                color: colors.white[100],
               }}
             >
               Next
